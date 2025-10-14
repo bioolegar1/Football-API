@@ -1,0 +1,12 @@
+﻿//Request All
+GET http://localhost:5271/times
+
+###
+
+//Request By Id
+GET http://localhost:5271/times/3
+
+###
+
+POST http://localhost:5271/usuarios?nome=Olegari
+
