@@ -9,4 +9,3 @@
         public int TitulosBrasileiros { get; set; }
         public int TitulosMundiais { get; set; }
     }
-

@@ -8,5 +8,14 @@ GET http://localhost:5271/times/3
 
 ###
 
-POST http://localhost:5271/usuarios?nome=Olegari
+//POST
+POST http://localhost:5271/times/
+Content-Type: application/json
+
+{
+  "nome": "Paris Saint German",
+  "cidade": "Paris",
+  "TitulosBrasileiros": 0,
+  "TitulosMundiais": 8
+}
 
