@@ -65,3 +65,8 @@ C:\Users\BioOlegari\Documents\Cursoc#\FutebolApi\bin\Debug\net8.0\runtimes\win-x
 C:\Users\BioOlegari\Documents\Cursoc#\FutebolApi\obj\Debug\net8.0\FutebolApi.csproj.AssemblyReference.cache
 C:\Users\BioOlegari\Documents\Cursoc#\FutebolApi\obj\Debug\net8.0\FutebolApi.csproj.Up2Date
 C:\Users\BioOlegari\Documents\Cursoc#\FutebolApi\obj\Debug\net8.0\FutebolApi.sourcelink.json
+C:\Users\BioOlegari\Documents\Cursoc#\FutebolApi\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\BioOlegari\Documents\Cursoc#\FutebolApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\BioOlegari\Documents\Cursoc#\FutebolApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\BioOlegari\Documents\Cursoc#\FutebolApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\BioOlegari\Documents\Cursoc#\FutebolApi\obj\Debug\net8.0\FutebolApi.MvcApplicationPartsAssemblyInfo.cs

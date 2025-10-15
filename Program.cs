@@ -7,22 +7,37 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options => options.
     UseSqlite("Data Source=futebol.db"));
 
+builder.Services.AddEndpointsApiExplorer(); //Swagger
+builder.Services.AddSwaggerGen();
+
+
 var app = builder.Build();
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 //GET all - READ
+//#################################################################################
 app.MapGet("/times", async (AppDbContext db) =>
 {
     return await db.Times.ToListAsync();
 });
 
+
 //GET by id - READ
+//#################################################################################
 app.MapGet("/times/{id}", async (int id, AppDbContext db) =>
 {
     var time = await db.Times.FindAsync(id);
     return time is not null ? Results.Ok(time) : Results.NotFound("Time não Encontrado");
 });
 
+
 //POST - CREATE
+//#################################################################################
 app.MapPost("/times", async  (AppDbContext db, Time novoTime) =>
 {
     await db.Times.AddAsync(novoTime);
@@ -30,7 +45,10 @@ app.MapPost("/times", async  (AppDbContext db, Time novoTime) =>
     return Results.Created($"O time {novoTime.Nome} foi adicionado com sucesso", novoTime);
 });
 
-//PUT -  UPDATE
+
+//PUT - UPDATE
+//#################################################################################
+
 app.MapPut("/times/{id}", async (int id, AppDbContext db, Time timeAtualizado) =>
 {
     var time = await db.Times.FindAsync(id);
@@ -45,7 +63,9 @@ app.MapPut("/times/{id}", async (int id, AppDbContext db, Time timeAtualizado) =
     return Results.Ok($"{time.Nome} Teve as informações atualizadas com sucesso");
 });
 
+
 //DELETE - VAI DE ARRASTA
+//#################################################################################
 app.MapDelete("/times/{id}", async (int id, AppDbContext db) =>
 {
     var time = await db.Times.FindAsync(id);

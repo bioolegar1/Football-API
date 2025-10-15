@@ -2,12 +2,10 @@
 GET http://localhost:5271/times
 
 ###
-
 //Request By Id
 GET http://localhost:5271/times/3
 
 ###
-
 //POST
 POST http://localhost:5271/times/
 Content-Type: application/json
