@@ -4,6 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddDbContext<AppDbContext>(options => options.
     UseSqlite("Data Source=futebol.db"));
 
@@ -13,6 +23,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseCors();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -20,7 +32,6 @@ if (app.Environment.IsDevelopment())
 }
 
 //GET all - READ
-//#################################################################################
 app.MapGet("/times", async (AppDbContext db) =>
 {
     return await db.Times.ToListAsync();
@@ -28,7 +39,6 @@ app.MapGet("/times", async (AppDbContext db) =>
 
 
 //GET by id - READ
-//#################################################################################
 app.MapGet("/times/{id}", async (int id, AppDbContext db) =>
 {
     var time = await db.Times.FindAsync(id);
@@ -37,7 +47,6 @@ app.MapGet("/times/{id}", async (int id, AppDbContext db) =>
 
 
 //POST - CREATE
-//#################################################################################
 app.MapPost("/times", async  (AppDbContext db, Time novoTime) =>
 {
     await db.Times.AddAsync(novoTime);
@@ -47,8 +56,6 @@ app.MapPost("/times", async  (AppDbContext db, Time novoTime) =>
 
 
 //PUT - UPDATE
-//#################################################################################
-
 app.MapPut("/times/{id}", async (int id, AppDbContext db, Time timeAtualizado) =>
 {
     var time = await db.Times.FindAsync(id);
@@ -65,7 +72,6 @@ app.MapPut("/times/{id}", async (int id, AppDbContext db, Time timeAtualizado) =
 
 
 //DELETE - VAI DE ARRASTA
-//#################################################################################
 app.MapDelete("/times/{id}", async (int id, AppDbContext db) =>
 {
     var time = await db.Times.FindAsync(id);
